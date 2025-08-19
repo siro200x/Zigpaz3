@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ジグソーパズルゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>ジグソーパズル</h1>
+    <div id="controls">
+        <div id="puzzle-container"></div>
+        <button id="shuffle-btn" style="display:none;">シャッフル</button>
+        <div id="complete-image" style="display:none;">
+            <img src="zaku.png" alt="完成画像" style="width:300px; margin-top:10px;">
+            <div>
+                <button id="continue-btn">続ける</button>
+                <button id="end-btn">終わる</button>
+            </div>
+        </div>
+    </div>
+    <div id="start-screen">
+        <p>パズルの完成図はこちらばい</p>
+        <button id="start-btn">スタート！</button>
+    </div>
+    <p id="message"></p>
+    <script src="script.js"></script>
+</body>
+
+</html>
