@@ -7,7 +7,7 @@ const continueBtn = document.getElementById('continue-btn');
 const endBtn = document.getElementById('end-btn');
 
 const image = 'mizugi.png'; // パズル画像
-const size = 3; // 3x3
+const size = 8; // 3x3
 let pieces = [];
 
 // パズル生成
