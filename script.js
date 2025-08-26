@@ -6,7 +6,7 @@ const completeImage = document.getElementById('complete-image');
 const continueBtn = document.getElementById('continue-btn');
 const endBtn = document.getElementById('end-btn');
 
-const image = 'zaku.png'; // パズル画像
+const image = 'mizugi.png'; // パズル画像
 const size = 3; // 3x3
 let pieces = [];
 
@@ -18,14 +18,31 @@ function createPuzzle(doShuffle) {
     const order = [...Array(size * size).keys()];
     if (doShuffle) shuffle(order);
 
+    // 画面幅の80%、最大300pxまでに制限
+    let containerSize = Math.min(window.innerWidth, window.innerHeight) * 0.95;
+    container.style.width = containerSize + "px";
+    container.style.height = containerSize + "px";
+
+    const pieceSize = containerSize / size;
+
+    // グリッド設定
+    container.style.gridTemplateColumns = `repeat(${size},${pieceSize}px)`;
+    container.style.gridTemplateRows = `repeat(${size},${pieceSize}px)`;
+
     order.forEach((index, pos) => {
         const x = index % size;
         const y = Math.floor(index / size);
 
         const piece = document.createElement('div');
         piece.className = 'piece';
+        piece.style.width = `${pieceSize}px`;
+        piece.style.height = `${pieceSize}px`;
         piece.style.backgroundImage = `url(${image})`;
-        piece.style.backgroundPosition = `-${x * 100}px -${y * 100}px`;
+
+        piece.style.backgroundSize = `${containerSize}px ${containerSize}px`;
+        piece.style.backgroundPosition = `-${x * pieceSize}px -${y * pieceSize}px`;
+        piece.style.backgroundRepeat = "no-repeat";
+
         piece.dataset.correct = index;
         piece.dataset.current = pos;
 
